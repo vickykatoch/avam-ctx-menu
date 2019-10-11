@@ -1,0 +1,4 @@
+<div class="d-flex" *ngFor="let category of categories" 
+class="ccy-item" [class.active]="activeCategory && activeCategory.name===category.name" (click)="selectCategory(category)">
+    {{category.name}}
+</div>

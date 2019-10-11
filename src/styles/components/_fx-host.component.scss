@@ -1,0 +1,23 @@
+fx-host {
+    background: $black;
+    .common {
+        background: #1c1e22;
+    }
+    .top-bar {
+        background: $gray-800;
+        
+    }
+    .main-section {
+        @extend .common;     
+    }
+    .bottom-section {
+        @extend .common;
+        flex: 0 0 300px;
+        margin: 0 0.25rem 0.25rem 0.25rem;
+    }
+    .right-section {
+        @extend .common;
+        flex: 0 0 300px;
+        margin-left: 0.25rem;
+    }
+}

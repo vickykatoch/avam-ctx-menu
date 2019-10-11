@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+@import "styles/all";
+
+body {
+    margin:0;
+    padding:0;
+    display: flex;
+    flex:1;
+    height: 100vh;
+    width:100vw;
+    background: $body-bg;
+    color:$body-color;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

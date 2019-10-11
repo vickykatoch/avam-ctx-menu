@@ -1,0 +1,16 @@
+fx-ccy-categories-bar {
+    font-size: 1em;
+    display: flex;
+    
+    .ccy-item {
+        padding: 5px 15px;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:hover {
+            color: $pink;
+        }
+    }
+    .ccy-item.active {
+        border-bottom: solid 1px $pink;;
+    }
+}
