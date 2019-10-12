@@ -1,4 +1,11 @@
-<div class="d-flex" *ngFor="let category of categories" 
-class="ccy-item" [class.active]="activeCategory && activeCategory.name===category.name" (click)="selectCategory(category)">
+<ng-container *ngIf="categories else emptyTemplate">
+  <div class="d-flex ccy-item" *ngFor="let category of categories"
+    [class.active]="selectedCategory && selectedCategory.name===category.name" (click)="selectCategory(category)">
     {{category.name}}
-</div>
+  </div>
+</ng-container>
+
+
+<ng-template #emptyTemplate>
+  <h3>No Category provided</h3>
+</ng-template>

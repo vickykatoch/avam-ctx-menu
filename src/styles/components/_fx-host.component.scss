@@ -1,23 +1,39 @@
 fx-host {
-    background: $black;
-    .common {
-        background: #1c1e22;
-    }
-    .top-bar {
-        background: $gray-800;
-        
-    }
-    .main-section {
-        @extend .common;     
-    }
-    .bottom-section {
-        @extend .common;
-        flex: 0 0 300px;
-        margin: 0 0.25rem 0.25rem 0.25rem;
-    }
-    .right-section {
-        @extend .common;
-        flex: 0 0 300px;
-        margin-left: 0.25rem;
-    }
+  background: $black;
+
+
+  .common {
+    background: #1c1e22;
+  }
+
+  .top-bar {
+    background: $gray-800;
+
+  }
+
+  .main-section {
+    @extend .common;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .bottom-section {
+    @extend .common;
+    flex: 0 0 200px;
+    margin: 0 0.25rem 0.25rem 0.25rem;
+  }
+
+  .right-section {
+    @extend .common;
+    flex: 0 0 250px;
+    margin-left: 0.25rem;
+  }
+
+  .trade-widget {
+    flex: 1;
+    border: 1px solid $gray-800;
+    margin: 2px 3px;
+    min-width: 200px;
+    min-height: 300px;
+  }
 }

@@ -1,53 +1,183 @@
 [{
-    "name": "major",
-    "index": 0,
-    "instruments": [
-        { "alias" :"EUR/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USF/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD/CHF", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"AUD/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD/CAD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"NZD/USD", "tickSize": "5", "priceFormat": "decimel"}
-    ]
-},{
-    "name": "minor",
-    "index": 1,
-    "instruments": [
-        { "base" :"EUR/GBP", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"EUR/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"AUD/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"CAD/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"NZD/JPY", "tickSize": "5", "priceFormat": "decimel"}
-    ]
-},{
-    "name": "exotic",
-    "index": 2,
-    "instruments": [
-        { "base" :"USD", "quote": "MXN", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP", "quote": "NOK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP", "quote": "DKK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"CHF", "quote": "NOK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"EUR", "quote": "TRY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD", "quote": "TRY", "tickSize": "5", "priceFormat": "decimel"}
-    ]
-},{
-    "name": "my",
-    "index": 3,
-    "instruments": [
-        { "alias" :"EUR/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USF/JPY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD/CHF", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"AUD/USD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD/CAD", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"NZD/USD", "tickSize": "5", "priceFormat": "decimel"},       
-        { "base" :"USD/MXN", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP/NOK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"GBP/DKK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"CHF/NOK", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"EUR/TRY", "tickSize": "5", "priceFormat": "decimel"},
-        { "base" :"USD/TRY", "tickSize": "5", "priceFormat": "decimel"}
-    ]
+  "name": "major",
+  "index": 0,
+  "instruments": [{
+      "alias": "EUR/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/CHF",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "AUD/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/CAD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "NZD/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    }
+  ]
+}, {
+  "name": "minor",
+  "index": 1,
+  "instruments": [{
+      "alias": "EUR/GBP",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "EUR/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "AUD/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "CAD/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "NZD/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    }
+  ]
+}, {
+  "name": "exotic",
+  "index": 2,
+  "instruments": [{
+      "alias": "USD",
+      "quote": "MXN",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP",
+      "quote": "NOK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP",
+      "quote": "DKK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "CHF",
+      "quote": "NOK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "EUR",
+      "quote": "TRY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD",
+      "quote": "TRY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    }
+  ]
+}, {
+  "name": "my",
+  "index": 3,
+  "instruments": [{
+      "alias": "EUR/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/JPY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/CHF",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "AUD/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/CAD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "NZD/USD",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/MXN",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP/NOK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "GBP/DKK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "CHF/NOK",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "EUR/TRY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    },
+    {
+      "alias": "USD/TRY",
+      "tickSize": "5",
+      "priceFormat": "decimel"
+    }
+  ]
 }]

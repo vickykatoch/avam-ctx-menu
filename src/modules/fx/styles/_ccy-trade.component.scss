@@ -1,4 +1,22 @@
 fx-ccy-trade {
-    font-size: 1em;
-    
+  font-size: 1em;
+
+
+  .title {
+    font-size: .8em;
+    background: $gray-900;
+    padding: .2em .5em;
+    border-bottom: 1px solid $gray-700;
+  }
+
+  .top-price {
+    position: relative;
+    background: $green;
+
+    .b-bid,
+    .b-offer {
+      font-size: 2em;
+
+    }
+  }
 }

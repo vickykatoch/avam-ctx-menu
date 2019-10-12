@@ -1,10 +1,22 @@
 <div class="d-flex flex-column">
-  <img src="assets/images/GBP.png" alt=""><br>
+  <div class="d-flex title">
+    <div class="d-flex flex-grow-1">
+      <span> {{ccyPair.base}}-{{ccyPair.quote}}</span>
+      <img [src]="ccyPair.baseImg">
+      <img [src]="ccyPair.quoteImg">
+    </div>
+
+  </div>
+  <div class="d-flex top-price">
+    <span class="flex-grow-1 d-flex justify-content-center b-bid">1.2334</span>
+    <span class="flex-grow-1 d-flex justify-content-center b-offer">1.2330</span>
+  </div>
+  <!-- <img src="assets/images/GBP.png" alt=""><br>
   <img src="assets/images/USD.png" alt=""><br>
   <img src="assets/images/JPY.png" alt=""><br>
   <img src="assets/images/MXN.png" alt=""><br>
   <img src="assets/images/TRY.png" alt=""><br>
   <img src="assets/images/CHF.png" alt=""><br>
   <img src="assets/images/NZD.png" alt=""><br>
-  <img src="assets/images/AUD.png" alt=""><br>
+  <img src="assets/images/AUD.png" alt=""><br> -->
 </div>

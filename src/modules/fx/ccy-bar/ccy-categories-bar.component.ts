@@ -1,34 +1,68 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//#region IMPORTS
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { ICcyCategory } from '../models/model';
+//#endregion
 
 @Component({
   selector: 'fx-ccy-categories-bar',
-  templateUrl: './ccy-categories-bar.component.html'
+  templateUrl: './ccy-categories-bar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CcyCategoriesBarComponent implements OnInit {
-  private ccyCategories: ICcyCategory[] = [];
+export class CcyCategoriesBarComponent {
+  //#region PRIVATE FIELDS
+  //#endregion
 
-  @Input() set categories(value: ICcyCategory[]) {
-    if(Array.isArray(value) && value.length) {
-      this.ccyCategories = value;
-      this.activeCategory = value[0];
-    } else {
-      this.ccyCategories = [];
-      this.activeCategory = undefined;
-    }
-  }
-  get categories(): ICcyCategory[] {
-    return this.ccyCategories;
-  }
-  @Output() activeCategoryChanged = new EventEmitter<ICcyCategory>();
-  activeCategory: ICcyCategory;
+  //#region EXTERNAL INPUT/OUTPUT
+  @Input() categories: ICcyCategory[];
+  @Input() selectedCategory: ICcyCategory;
+  @Output() categoryChanged = new EventEmitter<ICcyCategory>();
+  //#endregion
 
-  constructor() { }
+  //#region CTOR
+  constructor() {}
+  //#endregion
 
-  ngOnInit() {
-  }
+  //#region NG LIFECYCLE
+
+  //#endregion
+
+  //#region GUI CALLBACKS
   selectCategory(category: ICcyCategory) {
-    this.activeCategory = category;
-    this.activeCategoryChanged.next(category);
+    this.selectedCategory = category;
+    this.categoryChanged.next(category);
   }
+  //#endregion
+
+  //#region HELPER METHODS
+  //#endregion
+
+  // private ccyCategories: ICcyCategory[] = [];
+  // @Input() set categories(value: ICcyCategory[]) {
+  //   if(Array.isArray(value) && value.length) {
+  //     this.ccyCategories = value;
+  //     this.activeCategory = value[0];
+  //   } else {
+  //     this.ccyCategories = [];
+  //     this.activeCategory = undefined;
+  //   }
+  // }
+  // get categories(): ICcyCategory[] {
+  //   return this.ccyCategories;
+  // }
+  // @Output() activeCategoryChanged = new EventEmitter<ICcyCategory>();
+  // activeCategory: ICcyCategory;
+  // constructor() { }
+  // ngOnInit() {
+  // }
+  // selectCategory(category: ICcyCategory) {
+  //   this.activeCategory = category;
+  //   this.activeCategoryChanged.next(category);
+  // }
 }
