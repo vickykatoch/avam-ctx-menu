@@ -1,5 +1,6 @@
 fx-host {
   background: $black;
+  user-select: none;
 
 
   .common {
@@ -8,13 +9,24 @@ fx-host {
 
   .top-bar {
     background: $gray-800;
-
   }
 
   .main-section {
     @extend .common;
+    position: relative;
+
+  }
+
+  .left-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .bottom-section {
@@ -31,8 +43,9 @@ fx-host {
 
   .trade-widget {
     flex: 1;
-    border: 1px solid $gray-800;
-    margin: 2px 3px;
+    border: 1px solid $gray-900;
+    margin-top: 3px;
+    margin-right: 3px;
     min-width: 200px;
     min-height: 300px;
   }
