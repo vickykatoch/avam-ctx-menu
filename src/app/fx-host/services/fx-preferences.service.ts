@@ -9,7 +9,7 @@ const URL = 'assets/ccy-categies.json';
     providedIn: 'root'
 })
 export class FxPreferencesService {
-    constructor(private http: HttpClient) {        
+    constructor(private http: HttpClient) {
     }
 
     getCategories(): Observable<ICcyCategory[]> {

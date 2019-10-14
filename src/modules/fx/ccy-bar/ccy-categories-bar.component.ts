@@ -7,7 +7,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { ICcyCategory } from '../models/model';
+import { IAugmentedCcyCategory } from '../models/model';
 //#endregion
 
 @Component({
@@ -20,9 +20,9 @@ export class CcyCategoriesBarComponent {
   //#endregion
 
   //#region EXTERNAL INPUT/OUTPUT
-  @Input() categories: ICcyCategory[];
-  @Input() selectedCategory: ICcyCategory;
-  @Output() categoryChanged = new EventEmitter<ICcyCategory>();
+  @Input() categories: IAugmentedCcyCategory[];
+  @Input() selectedCategory: IAugmentedCcyCategory;
+  @Output() categoryChanged = new EventEmitter<IAugmentedCcyCategory>();
   //#endregion
 
   //#region CTOR
@@ -34,7 +34,7 @@ export class CcyCategoriesBarComponent {
   //#endregion
 
   //#region GUI CALLBACKS
-  selectCategory(category: ICcyCategory) {
+  selectCategory(category: IAugmentedCcyCategory) {
     this.selectedCategory = category;
     this.categoryChanged.next(category);
   }
@@ -42,27 +42,4 @@ export class CcyCategoriesBarComponent {
 
   //#region HELPER METHODS
   //#endregion
-
-  // private ccyCategories: ICcyCategory[] = [];
-  // @Input() set categories(value: ICcyCategory[]) {
-  //   if(Array.isArray(value) && value.length) {
-  //     this.ccyCategories = value;
-  //     this.activeCategory = value[0];
-  //   } else {
-  //     this.ccyCategories = [];
-  //     this.activeCategory = undefined;
-  //   }
-  // }
-  // get categories(): ICcyCategory[] {
-  //   return this.ccyCategories;
-  // }
-  // @Output() activeCategoryChanged = new EventEmitter<ICcyCategory>();
-  // activeCategory: ICcyCategory;
-  // constructor() { }
-  // ngOnInit() {
-  // }
-  // selectCategory(category: ICcyCategory) {
-  //   this.activeCategory = category;
-  //   this.activeCategoryChanged.next(category);
-  // }
 }

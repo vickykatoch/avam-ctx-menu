@@ -8,14 +8,42 @@ fx-ccy-trade {
     padding: .2em .5em;
     border-bottom: 1px solid $gray-900;
   }
-
-  .top-price {
-    position: relative;
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid $pink;
+    color: inherit;
+    width: 50px;
+    outline: none;
+    text-align: center;
+  }
+  .top-price {    
     background: $green;
+    height: 50px;
 
-    .b-bid,
-    .b-offer {
+    .empty {
       font-size: 2.5em;
+      line-height: 1em;
+    }
+    .price1 {
+      padding-bottom: 5px;
+      font-size: .8em;     
+    }
+    .price2 {      
+      font-size: 2.5em;
+    }
+    .price3 {
+      font-size: .8em;
+      padding-top: calc(1em / 2); 
+    }
+  }
+  .m-depth {
+    font-size: .8em;
+
+    .ba-size {
+      width : calc(.8em * 2);
+      text-align: right;
+      padding: 0 5px;
     }
   }
 }

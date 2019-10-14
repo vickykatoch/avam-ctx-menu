@@ -1,6 +1,12 @@
+import { Observable } from 'rxjs';
+
 export interface ICcyCategory {
   name: string;
   instruments: Instrument[];
+}
+export interface IAugmentedCcyCategory {
+    name: string;
+    instrumentsWithMktData: InstrumentMarketData[];
 }
 
 export interface Instrument {
@@ -8,8 +14,12 @@ export interface Instrument {
   tickSize: number;
   priceFormat: string;
 }
-export enum CcyPriceDirection {
-  None = 0,
+export interface InstrumentMarketData {
+    instrument: Instrument;
+    marketData$: Observable<IMarketData>;
+}
+export enum PriceDirection {
+  Same = 0,
   Up = 1,
   Down = 2
 }
@@ -21,7 +31,7 @@ export interface IPriceLevel {
   level: number;
   bid?: number;
   ask?: number;
-  direction?: CcyPriceDirection;
+  direction?: PriceDirection;
   bidSize?: number;
   askSize?: number;
   delta?: number;

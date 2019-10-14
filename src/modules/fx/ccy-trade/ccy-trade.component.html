@@ -5,18 +5,40 @@
       <img [src]="ccyPair.baseImg">
       <img [src]="ccyPair.quoteImg">
     </div>
-
   </div>
-  <div class="d-flex top-price">
-    <span class="flex-grow-1 d-flex justify-content-center b-bid">1.2334</span>
-    <span class="flex-grow-1 d-flex justify-content-center b-offer">1.2330</span>
-  </div>
-  <!-- <img src="assets/images/GBP.png" alt=""><br>
-  <img src="assets/images/USD.png" alt=""><br>
-  <img src="assets/images/JPY.png" alt=""><br>
-  <img src="assets/images/MXN.png" alt=""><br>
-  <img src="assets/images/TRY.png" alt=""><br>
-  <img src="assets/images/CHF.png" alt=""><br>
-  <img src="assets/images/NZD.png" alt=""><br>
-  <img src="assets/images/AUD.png" alt=""><br> -->
+  <ng-container *ngIf="topPrice; then topPriceTemplate; else emptyTopPriceTemplate"></ng-container>  
+  <ng-container *ngTemplateOutlet="marketDepthTemplate"></ng-container>
 </div>
+
+
+<ng-template #marketDepthTemplate>
+    <div class="d-flex m-depth" *ngFor="let depth of marketDepth; trackBy: getRowId">      
+      <span class="flex-grow-1 justify-content-end">{{depth.bid.price1}}</span>
+      <span class="flex-grow-1">{{depth.ask.price1}}</span>      
+    </div>
+</ng-template>
+
+<ng-template #emptyTopPriceTemplate>
+    <div class="d-flex top-price">  
+      <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
+      <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
+    </div>
+</ng-template>
+
+<ng-template #topPriceTemplate>
+    <div class="d-flex top-price">
+      <div class="flex-grow-1 d-flex justify-content-center align-items-end">
+        <span class="d-flex align-self-end price1">{{topPrice.bid.price1}}</span>
+        <span class="d-flex price2">{{topPrice.bid.price2}}</span>
+        <span class="align-self-start price3">{{topPrice.bid.price3}}</span>
+      </div>
+      <div class="flex-grow-1 d-flex justify-content-center align-items-end">
+          <span class="price1">{{topPrice.ask.price1}}</span>
+          <span class="d-flex price2">{{topPrice.ask.price2}}</span>
+          <span class="align-self-start price3">{{topPrice.ask.price3}}</span> 
+      </div>  
+    </div>  
+    <div class="d-flex justify-content-center">
+      <input type="number">
+    </div>  
+</ng-template>

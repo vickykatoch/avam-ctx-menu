@@ -1,6 +1,8 @@
 {
   "extends": "../tslint.json",
   "rules": {
+    "align": false,
+    "no-unused-expression" : [true],
     "directive-selector": [
       true,
       "attribute",

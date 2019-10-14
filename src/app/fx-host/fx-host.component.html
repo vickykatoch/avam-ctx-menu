@@ -19,9 +19,9 @@
 
 
 <ng-template #tradeWidgets>
-  <ng-container *ngIf="activeCategory && activeCategory.instruments.length">
-    <fx-ccy-trade *ngFor="let instrument of activeCategory.instruments; trackBy:getWidgetId" class="trade-widget"
-      [instrument]="instrument">
+  <ng-container *ngIf="activeCategory && activeCategory.instrumentsWithMktData.length">
+    <fx-ccy-trade *ngFor="let wrappedIns of activeCategory.instrumentsWithMktData; trackBy:getWidgetId" class="trade-widget"
+      [instrument]="wrappedIns.instrument" [marketData]="wrappedIns.marketData$ | async">
     </fx-ccy-trade>
   </ng-container>
 </ng-template>
