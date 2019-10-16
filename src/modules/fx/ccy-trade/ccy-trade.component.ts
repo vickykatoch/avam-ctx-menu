@@ -33,8 +33,7 @@ export class CcyTradeComponent implements OnInit {
   }
   @Input() set marketData(value: IMarketData) {
     if (value && value !== this.mktData) {
-      this.topPrice = PriceTransformer.transform(value.priceLevels[0], +this.instr.tickSize);
-      debugger;
+      this.topPrice = PriceTransformer.transform(value.priceLevels[0], +this.instr.tickSize);    
       this.marketDepth = value.priceLevels
         .filter(x => x.level > 0)
         .map(pLevel => PriceTransformer.transform(pLevel, +this.instr.tickSize));

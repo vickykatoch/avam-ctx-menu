@@ -8,19 +8,17 @@ fx-ccy-trade {
     padding: .2em .5em;
     border-bottom: 1px solid $gray-900;
   }
-  input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid $pink;
-    color: inherit;
-    width: 50px;
-    outline: none;
-    text-align: center;
-  }
+  
   .top-price {    
-    background: $green;
-    height: 50px;
+    cursor: pointer;
+    
 
+    .up-bg {
+      background: linear-gradient(to right, lighten($green, 10%), darken($green, 20%));
+    }
+    .down-bg {
+      background: $red;
+    }
     .empty {
       font-size: 2.5em;
       line-height: 1em;
@@ -29,21 +27,75 @@ fx-ccy-trade {
       padding-bottom: 5px;
       font-size: .8em;     
     }
-    .price2 {      
-      font-size: 2.5em;
+    .price2 {                
+      font-size: 2em;
     }
     .price3 {
       font-size: .8em;
-      padding-top: calc(1em / 2); 
+    }
+    .size {
+      background: #1c1e22; 
+      font-size: 0.8em;
+      
+      align-items: stretch;
+      border-bottom : 1px solid $gray-900; 
+    }
+    .size-m {      
+      @extend .size;
+      padding: 0 10px;   
+    }
+    .size-l {
+      padding-top: .15em;
+      border-top-right-radius: 10px;
+      justify-content: center;
+      &:hover {
+        opacity: .8;
+      }
+    }
+    .size-r {
+      padding-top: .15em;
+      border-top-left-radius: 10px;
+      justify-content: center; 
+      &:hover {
+        opacity: .8;
+      }     
+    }
+    .bid, .ask {
+      color: $white;
+      &:hover {
+        opacity: .6;
+      }
     }
   }
   .m-depth {
-    font-size: .8em;
-
-    .ba-size {
-      width : calc(.8em * 2);
-      text-align: right;
-      padding: 0 5px;
+    border-bottom: 1px solid $gray-900;
+    cursor: pointer;
+    &:hover {
+      opacity: .8;
+    }
+    .bid {      
+      background: linear-gradient(to right,darken($color: $blue, $amount: 20%),darken($color: $blue, $amount: 40%));
+      padding: 0 3px;
+    }
+    .size {
+      font-size: .7em;
+      text-align: right; 
+      width: 50px;
+      padding: 0 3px;
+    }
+    .ask {
+      background: linear-gradient(to right,darken($color: $red, $amount: 20%),darken($color: $red, $amount: 40%));
+      padding: 0 3px;
+    }
+    .price1 {
+      padding-bottom: .25em;
+      font-size: .8em;     
+    }
+    .price2 {                
+      font-size: 1.5em;
+    }
+    .price3 {
+      font-size: .8em;
     }
   }
 }

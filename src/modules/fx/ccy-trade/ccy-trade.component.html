@@ -1,44 +1,71 @@
 <div class="d-flex flex-column">
-  <div class="d-flex title">
-    <div class="d-flex flex-grow-1">
-      <span> {{ccyPair.base}}-{{ccyPair.quote}}</span>
-      <img [src]="ccyPair.baseImg">
-      <img [src]="ccyPair.quoteImg">
-    </div>
-  </div>
-  <ng-container *ngIf="topPrice; then topPriceTemplate; else emptyTopPriceTemplate"></ng-container>  
-  <ng-container *ngTemplateOutlet="marketDepthTemplate"></ng-container>
+   <div class="d-flex title">
+      <div class="d-flex flex-grow-1">
+         <span> {{ccyPair.base}}-{{ccyPair.quote}}</span>
+         <img [src]="ccyPair.baseImg" />
+         <img [src]="ccyPair.quoteImg" />
+      </div>
+   </div>
+   <ng-container *ngIf="topPrice; then topPriceTemplate; else emptyTopPriceTemplate"></ng-container>
+   <ng-container *ngTemplateOutlet="marketDepthTemplate"></ng-container>
 </div>
 
-
 <ng-template #marketDepthTemplate>
-    <div class="d-flex m-depth" *ngFor="let depth of marketDepth; trackBy: getRowId">      
-      <span class="flex-grow-1 justify-content-end">{{depth.bid.price1}}</span>
-      <span class="flex-grow-1">{{depth.ask.price1}}</span>      
-    </div>
+   <div class="d-flex m-depth" *ngFor="let depth of marketDepth; trackBy: getRowId">
+      <div class="size align-self-center">{{depth.priceLevel.bidSize}}</div>
+      <div class="d-flex flex-grow-1 justify-content-end pr-1 bid">
+         <span class="d-flex align-self-end price1">{{depth.bid.price1}}</span>
+         <span class="price2">{{depth.bid.price2}}</span>
+         <span class="price3">{{depth.bid.price3}}</span>
+      </div>
+      <div class="align-self-center">
+          <select>
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+           </select>
+      </div>
+      <div class="d-flex flex-grow-1 pl-1 ask">
+         <sub class="d-flex align-self-end price1">{{depth.ask.price1}}</sub>
+         <span class="price2">{{depth.ask.price2}}</span>
+         <span class="price3">{{depth.ask.price3}}</span>
+      </div>
+      <div class="size align-self-center">{{depth.priceLevel.askSize}}</div>
+   </div>
 </ng-template>
 
 <ng-template #emptyTopPriceTemplate>
-    <div class="d-flex top-price">  
+   <div class="d-flex top-price">
       <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
       <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
-    </div>
+   </div>
 </ng-template>
 
 <ng-template #topPriceTemplate>
-    <div class="d-flex top-price">
-      <div class="flex-grow-1 d-flex justify-content-center align-items-end">
-        <span class="d-flex align-self-end price1">{{topPrice.bid.price1}}</span>
-        <span class="d-flex price2">{{topPrice.bid.price2}}</span>
-        <span class="align-self-start price3">{{topPrice.bid.price3}}</span>
+   <div class="d-flex top-price flex-column">
+      <div class="d-flex flex-shrink-0 size">
+         <div class="d-flex flex-grow-1 size-l up-bg">BID</div>
+         <div class="d-flex no-shrink size-m justify-content-center">
+            <select>
+               <option value="100">100</option>
+               <option value="200">200</option>
+               <option value="300">300</option>
+            </select>
+         </div>
+         <div class="d-flex flex-grow-1 size-r up-bg">OFFER</div>
       </div>
-      <div class="flex-grow-1 d-flex justify-content-center align-items-end">
-          <span class="price1">{{topPrice.ask.price1}}</span>
-          <span class="d-flex price2">{{topPrice.ask.price2}}</span>
-          <span class="align-self-start price3">{{topPrice.ask.price3}}</span> 
-      </div>  
-    </div>  
-    <div class="d-flex justify-content-center">
-      <input type="number">
-    </div>  
+      <div class="d-flex up-bg">
+         <div class="flex-grow-1 d-flex align-items-end justify-content-center bid">
+            <span class="d-flex align-self-end price1">{{topPrice.bid.price1}}</span>
+            <span class="d-flex price2">{{topPrice.bid.price2}}</span>
+            <span class="align-self-start price3">{{topPrice.bid.price3}}</span>
+         </div>
+
+         <div class="flex-grow-1 d-flex justify-content-center align-items-end ask">
+            <span class="price1">{{topPrice.ask.price1}}</span>
+            <span class="d-flex price2">{{topPrice.ask.price2}}</span>
+            <span class="align-self-start price3">{{topPrice.ask.price3}}</span>
+         </div>
+      </div>
+   </div>
 </ng-template>

@@ -35,7 +35,7 @@ export class FxMarketDataService {
       setInterval(() => {
         const data = this.generateData();
         this.notifier.next(data);
-      }, 60000);
+      }, 500);
     }
   }
 
@@ -56,8 +56,8 @@ export class FxMarketDataService {
           bid: PRICES[getRandom(0, PRICES.length - 1)],
           ask: PRICES[getRandom(0, PRICES.length - 1)],
           direction: priceDir,
-          bidSize: size,
-          askSize: size,
+          bidSize: getRandom(10, 120),
+          askSize: getRandom(100, 200),
           delta: DELTA[getRandom(0, DELTA.length - 1)]
         });
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FxPreferencesService } from './services/fx-preferences.service';
 import { Observable } from 'rxjs';
 import { tap, filter, map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ const MODULE_NAME = 'FX-HOST';
 @Component({
    selector: 'fx-host',
    templateUrl: './fx-host.component.html',
+   changeDetection: ChangeDetectionStrategy.OnPush,
    host: {
       class: 'd-flex flex-grow-1 flex-column'
    }
