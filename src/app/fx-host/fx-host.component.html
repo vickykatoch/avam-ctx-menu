@@ -1,27 +1,34 @@
 <div class="d-flex top-bar p-1">
-  <fx-ccy-categories-bar [categories]="ccyCategories$ | async" class="flex-grow-1" [selectedCategory]="activeCategory"
-    (categoryChanged)="activeCategory=$event"></fx-ccy-categories-bar>
+  <fx-ccy-categories-bar
+    [categories]="ccyCategories$ | async"
+    class="flex-grow-1"
+    [selectedCategory]="activeCategory"
+    (categoryChanged)="activeCategory=$event"
+  ></fx-ccy-categories-bar>
   <div class="d-flex flex-shrink-0 mr-2">
     <i class="fa fa-cog"></i>
   </div>
 </div>
 <div class="d-flex flex-grow-1 m-1">
   <div class="d-flex flex-grow-1 main-section">
-    <div class="d-flex left-section">
-      <!-- <div class="d-flex flex-wrap"> -->
+    <div class="left-section">
       <ng-container *ngTemplateOutlet="tradeWidgets"></ng-container>
-      <!-- </div> -->
     </div>
   </div>
   <div class="d-flex flex-shrink-0 right-section"></div>
 </div>
 <div class="d-flex flex-shrink-0 bottom-section"></div>
 
-
 <ng-template #tradeWidgets>
   <ng-container *ngIf="activeCategory && activeCategory.instrumentsWithMktData.length">
-    <fx-ccy-trade *ngFor="let wrappedIns of activeCategory.instrumentsWithMktData; trackBy:getWidgetId" class="trade-widget"
-      [instrument]="wrappedIns.instrument" [marketData]="wrappedIns.marketData$ | async">
-    </fx-ccy-trade>
+    <div class="d-flex flex-wrap">
+      <fx-ccy-trade
+        *ngFor="let wrappedIns of activeCategory.instrumentsWithMktData; trackBy:getWidgetId"
+        class="trade-widget"
+        [instrument]="wrappedIns.instrument"
+        [marketData]="wrappedIns.marketData$ | async"
+      >
+      </fx-ccy-trade>
+    </div>
   </ng-container>
 </ng-template>
