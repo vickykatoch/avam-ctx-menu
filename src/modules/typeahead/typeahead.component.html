@@ -1,12 +1,13 @@
 <input (keydown)="onKeyDown($event)" placeholder="Search" type="text"
   (keyup)="searchText$.next($event.target.value, $event.target)" #searchInput>
-<div class="d-flex flex-column result" *ngIf="searchResult && searchResult.length" [style.max-height.px]="height"
-  [style.top.px]="searchInput.offsetHeight">
-  <div class="d-flex item" *ngFor="let item of searchResult; trackBy: rowId" (click)="onSelect(item)"
+<cdk-virtual-scroll-viewport [itemSize]="itemHeight" *ngIf="searchResult && searchResult.length"
+  [style.height.px]="height" [style.top.px]="searchInput.offsetHeight" class="d-flex flex-fill flex-column result">
+  <div class="d-flex item" *cdkVirtualFor="let item of searchResult; trackBy: rowId" (click)="onSelect(item)"
     [class.selected]="selectedItem===item">
     {{item.alias}}
   </div>
-</div>
+</cdk-virtual-scroll-viewport>
+
 
 <ng-template #defaultItemTemplate let-item="item">
   <span>{{item.alias}}</span>

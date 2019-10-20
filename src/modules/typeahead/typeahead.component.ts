@@ -68,6 +68,7 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   @Output() searchItemSelected = new EventEmitter<any>();
   @Input() itemTemplate: TemplateRef<any>;
   @Input() rowId: trackByFn;
+  @Input() itemHeight: number = 20;
   //#endregion
 
   //#region NG LIFE-CYCLE
