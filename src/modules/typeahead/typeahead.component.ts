@@ -63,12 +63,12 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   //#endregion
 
   //#region EXTERNAL INPUT/OUTPUT
-  @Input() query: QueryFn<T>;
+  @Input() query: QueryFn<any>;
   @Input() height: number;
   @Output() searchItemSelected = new EventEmitter<any>();
   @Input() itemTemplate: TemplateRef<any>;
-  @Input() rowId: trackByFn;
-  @Input() itemHeight: number = 20;
+  @Input() rowId: trackByFn<any>;
+  @Input() itemHeight = 20;
   //#endregion
 
   //#region NG LIFE-CYCLE
@@ -128,7 +128,7 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     this.reset();
   }
   getRowId(index: number, item: any): string {
-    return item;
+    return item.toString();
   }
   //#endregion
 
