@@ -1,11 +1,9 @@
 <div class="d-flex top-bar p-1">
-  <fx-ccy-categories-bar
-    [categories]="ccyCategories$ | async"
-    class="flex-grow-1"
-    [selectedCategory]="activeCategory"
-    (categoryChanged)="activeCategory=$event"
-  ></fx-ccy-categories-bar>
+  <fx-ccy-categories-bar [categories]="ccyCategories$ | async" class="flex-grow-1" [selectedCategory]="activeCategory"
+    (categoryChanged)="activeCategory=$event"></fx-ccy-categories-bar>
   <div class="d-flex flex-shrink-0 mr-2">
+    <app-typeahead *ngIf="activeCategory?.name==='major'" [height]="200" (searchItemSelected)="onItemSelected($event)"
+      [rowId]="getInstrumentId" [query]="onSearch.bind(this)"></app-typeahead>
     <i class="fa fa-cog"></i>
   </div>
 </div>
@@ -22,12 +20,8 @@
 <ng-template #tradeWidgets>
   <ng-container *ngIf="activeCategory && activeCategory.instrumentsWithMktData.length">
     <div class="d-flex flex-wrap">
-      <fx-ccy-trade
-        *ngFor="let wrappedIns of activeCategory.instrumentsWithMktData; trackBy:getWidgetId"
-        class="trade-widget"
-        [instrument]="wrappedIns.instrument"
-        [marketData]="wrappedIns.marketData$ | async"
-      >
+      <fx-ccy-trade *ngFor="let wrappedIns of activeCategory.instrumentsWithMktData; trackBy:getWidgetId"
+        class="trade-widget" [instrument]="wrappedIns.instrument" [marketData]="wrappedIns.marketData$ | async">
       </fx-ccy-trade>
     </div>
   </ng-container>

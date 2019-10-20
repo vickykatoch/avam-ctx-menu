@@ -19,8 +19,11 @@
       "dom"
     ],
     "paths": {
-      "fx" : [
+      "fx": [
         "src/modules/fx"
+      ],
+      "typeahead": [
+        "src/modules/typeahead"
       ]
     }
   }
