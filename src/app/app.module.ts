@@ -7,10 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypeaheadModule } from 'typeahead';
 import { TestSupComponent } from './test-sup/test-sup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, FxHostComponent, TestSupComponent],
-  imports: [BrowserModule, HttpClientModule, FxModule, BrowserAnimationsModule, TypeaheadModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FxModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    TypeaheadModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

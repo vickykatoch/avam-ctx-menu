@@ -26,6 +26,7 @@ export class FxHostComponent implements OnInit, OnDestroy {
   ccyCategories$: Observable<IAugmentedCcyCategory[]>;
   activeCategory?: IAugmentedCcyCategory;
   marketData$: Observable<IMarketData>;
+  private _fontSize = 16;
 
   constructor(
     private prefsService: FxPreferencesService,
@@ -73,5 +74,13 @@ export class FxHostComponent implements OnInit, OnDestroy {
   }
   getInstrumentId(index: number, instrument: Instrument): string {
     return instrument.alias;
+  }
+  get fontSize(): number {
+    return this._fontSize;
+  }
+  set fontSize(value: number) {
+    // debugger;
+    this._fontSize = value;
+    document.documentElement.style.setProperty('--font-size', `${value}px`);
   }
 }

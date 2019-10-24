@@ -2,7 +2,7 @@
   <fx-ccy-categories-bar [categories]="ccyCategories$ | async" class="flex-grow-1" [selectedCategory]="activeCategory"
     (categoryChanged)="activeCategory=$event"></fx-ccy-categories-bar>
   <div class="d-flex flex-shrink-0 mr-2">
-    <!-- <input type="range"> -->
+    <input type="range" min="8" max="40" step="1" [(ngModel)]="fontSize">
     <app-typeahead *ngIf="activeCategory?.name==='major'" [height]="100" (searchItemSelected)="onItemSelected($event)"
       [rowId]="getInstrumentId" [query]="onSearch.bind(this)"></app-typeahead>
     <i class="fa fa-cog"></i>

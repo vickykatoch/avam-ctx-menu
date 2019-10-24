@@ -62,24 +62,26 @@ export class FxMarketDataService {
   private generateData(): Record<string, IMarketData> {
     const mktData: Record<string, IMarketData> = {};
     this.subscribedInstrumentSet.forEach(instrument => {
-      const priceLevels: IPriceLevel[] = [];
-      mktData[instrument] = {
-        instrument,
-        priceLevels
-      };
-      for (let level = 0; level < 5; level++) {
-        const size = getRandom(10, 120);
-        const priceDir = getRandom(0, 2) as PriceDirection;
+      if (instrument !== 'EUR/USD') {
+        const priceLevels: IPriceLevel[] = [];
+        mktData[instrument] = {
+          instrument,
+          priceLevels
+        };
+        for (let level = 0; level < 5; level++) {
+          const size = getRandom(10, 120);
+          const priceDir = getRandom(0, 2) as PriceDirection;
 
-        priceLevels.push({
-          level,
-          bid: PRICES[getRandom(0, PRICES.length - 1)],
-          ask: PRICES[getRandom(0, PRICES.length - 1)],
-          direction: priceDir,
-          bidSize: getRandom(10, 120),
-          askSize: getRandom(100, 200),
-          delta: DELTA[getRandom(0, DELTA.length - 1)]
-        });
+          priceLevels.push({
+            level,
+            bid: PRICES[getRandom(0, PRICES.length - 1)],
+            ask: PRICES[getRandom(0, PRICES.length - 1)],
+            direction: priceDir,
+            bidSize: getRandom(10, 120),
+            askSize: getRandom(100, 200),
+            delta: DELTA[getRandom(0, DELTA.length - 1)]
+          });
+        }
       }
     });
     return mktData;

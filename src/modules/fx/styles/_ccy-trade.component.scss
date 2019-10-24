@@ -10,19 +10,18 @@ fx-ccy-trade {
 
   .normal-price {
     font-size: 1.5em;
-    // background: linear-gradient(to right, lighten($green, 10%), darken($green, 20%));
     line-height: 1.1em;
 
     .sub {
-      font-size: calc(1em / 3);
+      font-size: calc(1em / 2);
       position: relative;
-      top: .8em;
+      top: .3em;
     }
 
     .sup {
-      font-size: calc(1em / 2.5);
+      font-size: calc(1em / 2);
       position: relative;
-      top: -.6em;
+      top: -.4em;
       font-weight: bold;
     }
 
@@ -68,28 +67,15 @@ fx-ccy-trade {
     }
 
     .size {
-      font-size: .7em;
+      font-size: .5em;
       text-align: right;
-      width: 50px;
+      width: 3em;
       padding: 0 3px;
     }
 
     .ask {
       background: linear-gradient(to right, darken($color: $red, $amount: 20%), darken($color: $red, $amount: 40%));
       padding: 0 3px;
-    }
-
-    .price1 {
-      padding-bottom: .25em;
-      font-size: .8em;
-    }
-
-    .price2 {
-      font-size: 1.5em;
-    }
-
-    .price3 {
-      font-size: .8em;
     }
   }
 }

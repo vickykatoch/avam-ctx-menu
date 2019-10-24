@@ -11,27 +11,29 @@
 </div>
 
 <ng-template #marketDepthTemplate>
-  <div class="d-flex m-depth" *ngFor="let depth of marketDepth; trackBy: getRowId">
+  <div class="d-flex m-depth normal-price" *ngFor="let depth of marketDepth; trackBy: getRowId">
     <div class="size align-self-center">{{depth.priceLevel.bidSize}}</div>
     <div class="d-flex flex-grow-1 justify-content-end pr-1 bid">
-      <span class="d-flex align-self-end price1">{{depth.bid.price1}}</span>
-      <span class="price2">{{depth.bid.price2}}</span>
-      <span class="price3">{{depth.bid.price3}}</span>
+      <span class="sub">{{depth.bid.price1}}</span>
+      <span class="xl">{{depth.bid.price2}}</span>
+      <span class="sup">{{depth.bid.price3}}</span>
     </div>
 
     <div class="d-flex flex-grow-1 pl-1 ask">
-      <sub class="d-flex align-self-end price1">{{depth.ask.price1}}</sub>
-      <span class="price2">{{depth.ask.price2}}</span>
-      <span class="price3">{{depth.ask.price3}}</span>
+      <sub class="sub">{{depth.ask.price1}}</sub>
+      <span class="xl">{{depth.ask.price2}}</span>
+      <span class="sup">{{depth.ask.price3}}</span>
     </div>
     <div class="size align-self-center">{{depth.priceLevel.askSize}}</div>
   </div>
 </ng-template>
 
 <ng-template #emptyTopPriceTemplate>
-  <div class="d-flex top-price">
-    <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
-    <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
+  <div class="d-flex flex-fill flex-column align-items-center justify-content-center">
+    <i class="fa fa-battery-empty fa-5x" aria-hidden="true"></i>
+    <h2>No Data</h2>
+    <!-- <div class="flex-grow-1 d-flex justify-content-center empty">--</div>
+    <div class="flex-grow-1 d-flex justify-content-center empty">--</div> -->
   </div>
 </ng-template>
 
@@ -40,11 +42,7 @@
     <div class="d-flex flex-shrink-0 size">
       <div class="d-flex flex-grow-1 size-l up-bg">BID</div>
       <div class="d-flex no-shrink size-m justify-content-center">
-        <select>
-          <option value="100">100</option>
-          <option value="200">200</option>
-          <option value="300">300</option>
-        </select>
+
       </div>
       <div class="d-flex flex-grow-1 size-r up-bg">OFFER</div>
     </div>
