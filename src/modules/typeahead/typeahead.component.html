@@ -1,14 +1,30 @@
 <input (keydown)="onKeyDown($event)" placeholder="Search" type="text"
   (keyup)="searchText$.next($event.target.value, $event.target)" #searchInput>
-<cdk-virtual-scroll-viewport [itemSize]="itemHeight" *ngIf="searchResult && searchResult.length"
-  [style.height.px]="height" [style.top.px]="searchInput.offsetHeight" class="d-flex flex-fill flex-column result">
-  <div class="d-flex item" *cdkVirtualFor="let item of searchResult; trackBy: rowId" (click)="onSelect(item)"
-    [class.selected]="selectedItem===item">
-    {{item.alias}}
-  </div>
-</cdk-virtual-scroll-viewport>
+<ng-container *ngIf="searchResult && searchResult.length" [ngTemplateOutlet]="defaultItemTemplate">
 
+</ng-container>
+<!-- [ngTemplateOutletContext]="" 
+-->
+<ng-template #xlListTemplate>
+  <cdk-virtual-scroll-viewport [itemSize]="itemHeight" [style.height.px]="height"
+    [style.top.px]="searchInput.offsetHeight" class="d-flex flex-fill flex-column result">
+    <div class="d-flex item" *cdkVirtualFor="let item of searchResult; trackBy: rowId" (click)="onSelect(item)"
+      [class.selected]="selectedItem===item">
+      {{item.alias}}
+    </div>
+  </cdk-virtual-scroll-viewport>
+</ng-template>
 
 <ng-template #defaultItemTemplate let-item="item">
-  <span>{{item.alias}}</span>
+  <div class="result">
+    <div class="d-flex flex-column flex-grow-1 hElem" *ngIf="searchResult && searchResult.length"
+      [style.max-height.px]="height" [style.top.px]="searchInput.offsetHeight" style="overflow-y: auto;">
+      <div class="d-flex item" *ngFor="let item of searchResult; trackBy: rowId" (click)="onSelect(item)"
+        [class.selected]="selectedItem===item">
+        {{item.alias}}
+      </div>
+    </div>
+  </div>
 </ng-template>
+
+<!-- https://hiddedevries.nl/en/blog/2018-12-10-scroll-an-element-into-the-center-of-the-viewport -->

@@ -6,9 +6,10 @@ import { FxHostComponent } from './fx-host/fx-host.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TypeaheadModule } from 'typeahead';
+import { TestSupComponent } from './test-sup/test-sup.component';
 
 @NgModule({
-  declarations: [AppComponent, FxHostComponent],
+  declarations: [AppComponent, FxHostComponent, TestSupComponent],
   imports: [BrowserModule, HttpClientModule, FxModule, BrowserAnimationsModule, TypeaheadModule],
   providers: [],
   bootstrap: [AppComponent]

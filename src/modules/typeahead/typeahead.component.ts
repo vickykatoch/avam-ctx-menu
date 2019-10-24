@@ -7,13 +7,24 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  TemplateRef
+  TemplateRef,
+  Renderer2
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
 
+//#region MODULE TYPES/CONSTANTS
 export type QueryFn<T> = (searchText: string) => T[];
 export type trackByFn<T> = (index: number, item: T) => string | number | Date;
+const isInViewPort = (viewPort: HTMLElement, node: HTMLElement): boolean => {
+  // debugger;
+  const rect = viewPort.getBoundingClientRect();
+  console.log(rect);
+  console.log(`Parent Top : ${viewPort.scrollTop}, Node Top : ${node.offsetTop}`);
+  const x = node.scrollTop + node.scrollHeight;
+  return x < rect.height;
+};
+//#endregion
 
 @Component({
   selector: 'app-typeahead',
@@ -32,10 +43,11 @@ export type trackByFn<T> = (index: number, item: T) => string | number | Date;
         position: absolute;
         left: 0;
         right: 0;
-        overflow-y: auto;
+        overflow: hidden;
       }
       .item {
         cursor: pointer;
+        position: relative;
       }
       .item:hover {
         background: #272b30;
@@ -57,7 +69,7 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   //#endregion
 
   //#region CTOS
-  constructor() {
+  constructor(private renderer: Renderer2, private elem: ElementRef) {
     this.rowId = this.getRowId;
   }
   //#endregion
@@ -106,12 +118,14 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
         ) {
           this.currentIndex++;
           this.selectedItem = this.searchResult[this.currentIndex];
+          this.moveSearchItemFocus(true);
         }
         break;
       case 38: // up
         if (this.searchResult && this.searchResult.length && this.currentIndex > 0) {
           this.currentIndex--;
           this.selectedItem = this.searchResult[this.currentIndex];
+          this.moveSearchItemFocus(true);
         }
         break;
       case 13:
@@ -129,6 +143,14 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   }
   getRowId(index: number, item: any): string {
     return item.toString();
+  }
+  private moveSearchItemFocus(isDown: boolean) {
+    const hostElem = this.elem.nativeElement as HTMLElement;
+    const nodes = hostElem.querySelectorAll('.item');
+    const container = hostElem.querySelector('.hElem');
+    if (!isInViewPort(container as HTMLElement, nodes[this.currentIndex] as HTMLElement)) {
+      nodes[this.currentIndex].scrollIntoView();
+    }
   }
   //#endregion
 

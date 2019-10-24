@@ -11,6 +11,7 @@ const getRandom = (min: number, max: number): number => {
 @Injectable({ providedIn: 'root' })
 export class FxMarketDataService {
   private subscribedInstrumentSet = new Set<string>();
+  private valuesMap = new Map<string, IMarketData>();
   private notifier = new Subject<Record<string, IMarketData>>();
   private obs$ = this.notifier.asObservable();
   private isStarted = false;
@@ -47,13 +48,14 @@ export class FxMarketDataService {
       this.isStarted = true;
       setTimeout(() => {
         const data1 = this.generateData();
+        Object.keys(data1).forEach(key => this.valuesMap.set(key, data1[key]));
         this.notifier.next(data1);
       }, 100);
 
       setInterval(() => {
-        const data = this.generateData();
+        const data = this.generateRandom(5);
         this.notifier.next(data);
-      }, 500);
+      }, 100);
     }
   }
 
@@ -80,6 +82,34 @@ export class FxMarketDataService {
         });
       }
     });
+    return mktData;
+  }
+  private generateRandom(changeLevel: number): Record<string, IMarketData> {
+    const mktData: Record<string, IMarketData> = {};
+    const all = Array.from(this.subscribedInstrumentSet);
+    const instrument = all[getRandom(0, all.length - 1)];
+    const marketData = this.valuesMap.get(instrument);
+
+    for (let i = 0; i < changeLevel; i++) {
+      const pLevelIndex = getRandom(0, marketData.priceLevels.length - 1);
+      const size = getRandom(10, 120);
+      const priceDir = getRandom(0, 2) as PriceDirection;
+      const pLevel = {
+        level: pLevelIndex,
+        bid: PRICES[getRandom(0, PRICES.length - 1)],
+        ask: PRICES[getRandom(0, PRICES.length - 1)],
+        direction: priceDir,
+        bidSize: getRandom(10, 120),
+        askSize: getRandom(100, 200),
+        delta: DELTA[getRandom(0, DELTA.length - 1)]
+      };
+      marketData.priceLevels[pLevelIndex] = pLevel;
+    }
+
+    mktData[instrument] = {
+      instrument,
+      priceLevels: [...marketData.priceLevels]
+    };
     return mktData;
   }
 }
